@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "ch32x035.h": "c",
+        "usb_desc.h": "c",
+        "led.h": "c",
+        "usart.h": "c",
+        "cdc_main.h": "c",
+        "buffer.h": "c",
+        "main.h": "c"
+    }
+}
