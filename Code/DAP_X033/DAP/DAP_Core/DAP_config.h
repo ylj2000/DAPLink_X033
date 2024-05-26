@@ -327,12 +327,12 @@ __STATIC_INLINE void PORT_JTAG_SETUP (void) {
   GPIOA->CFGLR|=0x08<<(4*3);
   GPIOA->BSHR=1<<3;
 
-//  if (DIR_IsEN == 1)
-//  {
-//      GPIOA->CFGLR&=~(0x0F<<(4*5));//DIR,GPIOA5
-//      GPIOA->CFGLR|=0x03<<(4*5);
-//      GPIOA->BCR=1<<5;
-//  }
+  if (DIR_IsEN == 1)
+  {
+      GPIOA->CFGLR&=~(0x0F<<(4*5));//DIR,GPIOA5
+      GPIOA->CFGLR|=0x03<<(4*5);
+      GPIOA->BCR=1<<5;
+  }
 }
 
 /** Setup SWD I/O pins: SWCLK, SWDIO, and nRESET.
@@ -355,12 +355,12 @@ __STATIC_INLINE void PORT_SWD_SETUP (void) {
   GPIOA->CFGLR|=0x03<<(4*4);
   GPIOA->BSHR=1<<4;
 
-//  if (DIR_IsEN == 1)
-//  {
-//    GPIOA->CFGLR&=~(0x0F<<(4*5));//DIR,GPIOA5
-//    GPIOA->CFGLR|=0x03<<(4*5);
-//    GPIOA->BCR=1<<5;
-//  }
+  if (DIR_IsEN == 1)
+  {
+    GPIOA->CFGLR&=~(0x0F<<(4*5));//DIR,GPIOA5
+    GPIOA->CFGLR|=0x03<<(4*5);
+    GPIOA->BCR=1<<5;
+  }
 }
 
 /** Disable JTAG/SWD I/O Pins.
@@ -371,31 +371,31 @@ __STATIC_INLINE void PORT_OFF (void) {
   RCC->APB2PCENR|=RCC_APB2Periph_GPIOA;
 
   GPIOA->CFGHR&=~(0x0F<<(4*3));//CLK,GPIOA11
-//  GPIOA->CFGHR|=0x08<<(4*3);
-//  GPIOA->BSHR=1<<11;
+  GPIOA->CFGHR|=0x08<<(4*3);
+  GPIOA->BSHR=1<<11;
 
   GPIOA->CFGHR&=~(0x0F<<(4*2));//DIO,GPIOA10
-//  GPIOA->CFGHR|=0x08<<(4*2);
-//  GPIOA->BSHR=1<<10;
+  GPIOA->CFGHR|=0x08<<(4*2);
+  GPIOA->BSHR=1<<10;
 
   GPIOA->CFGLR&=~(0x0F<<(4*4));//RST,GPIOA4
-//  GPIOA->CFGLR|=0x08<<(4*4);
-//  GPIOA->BSHR=1<<4;
+  GPIOA->CFGLR|=0x08<<(4*4);
+  GPIOA->BSHR=1<<4;
 
   GPIOA->CFGLR&=~(0x0F<<(4*2));//TDI,GPIOA2
-//  GPIOA->CFGLR|=0x08<<(4*2);
-//  GPIOA->BSHR=1<<2;
+  GPIOA->CFGLR|=0x08<<(4*2);
+  GPIOA->BSHR=1<<2;
 
   GPIOA->CFGLR&=~(0x0F<<(4*3));//TDO,GPIOA3
-//  GPIOA->CFGLR|=0x08<<(4*3);
-//  GPIOA->BSHR=1<<3;
+  GPIOA->CFGLR|=0x08<<(4*3);
+  GPIOA->BSHR=1<<3;
 
-//  if (DIR_IsEN == 1)
-//  {
-//      GPIOA->CFGLR&=~(0x0F<<(4*5));//DIR,GPIOA5
-//      GPIOA->CFGLR|=0x08<<(4*5);
-//      GPIOA->BSHR=1<<5;
-//  }
+  if (DIR_IsEN == 1)
+  {
+      GPIOA->CFGLR&=~(0x0F<<(4*5));//DIR,GPIOA5
+      GPIOA->CFGLR|=0x08<<(4*5);
+      GPIOA->BSHR=1<<5;
+  }
 }
 
 // SWCLK/TCK I/O pin -------------------------------------
@@ -477,10 +477,10 @@ __STATIC_FORCEINLINE void     PIN_SWDIO_OUT_ENABLE  (void) {
   GPIOA->CFGHR&=~(0x0F<<(4*2));//DIO,GPIOA10
   GPIOA->CFGHR|=0x03<<(4*2);
 
-//  if (DIR_IsEN == 1)
-//  {
-//    GPIOA->BCR=1<<5;//DIR,GPIOA5
-//  }
+  if (DIR_IsEN == 1)
+  {
+    GPIOA->BCR=1<<5;//DIR,GPIOA5
+  }
 }
 
 /** SWDIO I/O pin: Switch to Input mode (used in SWD mode only).
@@ -491,10 +491,10 @@ __STATIC_FORCEINLINE void     PIN_SWDIO_OUT_DISABLE (void) {
   GPIOA->CFGHR&=~(0x0F<<(4*2));//DIO,GPIOA10
   GPIOA->CFGHR|=0x08<<(4*2);
   
-//  if (DIR_IsEN == 1)
-//  {
-//    GPIOA->BSHR=1<<5;//DIR,GPIOA5
-//  }
+  if (DIR_IsEN == 1)
+  {
+    GPIOA->BSHR=1<<5;//DIR,GPIOA5
+  }
 }
 
 

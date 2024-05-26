@@ -61,32 +61,32 @@ void DAP_Init(void)
 {
     DAP_Setup();
 
-//    RCC->APB2PCENR |= RCC_APB2Periph_GPIOA;
-//    GPIOA->CFGLR &= ~(0x0F << (4 * 5)); // DIR,GPIOA5
-//    GPIOA->CFGLR |= 0x08 << (4 * 5);
-//    GPIOA->BCR = 1 << 5;
-//
-//    for (volatile uint32_t i = 0; i < 100; i++)
-//    {
-//        __NOP();
-//    }
-//
-//    uint8_t temp = (GPIOA->INDR >> 5) & 0x01;
-//    if (temp == 0)
-//    {
-//        DIR_IsEN = 1;
-//    }
-//
-//    if (DIR_IsEN == 0)
-//    {
-//        GPIOA->CFGLR &= ~(0x0F << (4 * 5)); // DIR,GPIOA5
-//    }
-//    else
-//    {
-//        GPIOA->CFGLR &= ~(0x0F << (4 * 5)); // DIR,GPIOA5
-//        GPIOA->CFGLR |= 0x03 << (4 * 5);
-//        GPIOA->BCR = 1 << 5;
-//    }
+    RCC->APB2PCENR |= RCC_APB2Periph_GPIOA;
+    GPIOA->CFGLR &= ~(0x0F << (4 * 5)); // DIR,GPIOA5
+    GPIOA->CFGLR |= 0x08 << (4 * 5);
+    GPIOA->BCR = 1 << 5;
+
+    for (volatile uint32_t i = 0; i < 100; i++)
+    {
+        __NOP();
+    }
+
+    uint8_t temp = (GPIOA->INDR >> 5) & 0x01;
+    if (temp == 0)
+    {
+        DIR_IsEN = 1;
+    }
+
+    if (DIR_IsEN == 0)
+    {
+        GPIOA->CFGLR &= ~(0x0F << (4 * 5)); // DIR,GPIOA5
+    }
+    else
+    {
+        GPIOA->CFGLR &= ~(0x0F << (4 * 5)); // DIR,GPIOA5
+        GPIOA->CFGLR |= 0x03 << (4 * 5);
+        GPIOA->BCR = 1 << 5;
+    }
 }
 
 void DAP_Task(void)
