@@ -412,7 +412,7 @@ static uint32_t DAP_SWJ_Clock(const uint8_t *request, uint8_t *response) {
           (uint32_t)(*(request+2) << 16) |
           (uint32_t)(*(request+3) << 24);
 
-  clock *= 10;
+//  clock *= 10;
 
   if (clock == 0U) {
     *response = DAP_ERROR;
